@@ -24,22 +24,6 @@
 [JunjieYan-photo]: https://github.com/junting/seg2vid/blob/junting/authors/JunjieYan.png "Junjie Yan"
 [XiaogangWang-photo]: https://github.com/junting/seg2vid/blob/junting/authors/XiaogangWang.png "Xiaogang Wang"
 
-A joint collaboration between:
-
-| ![logo-sensetime] | ![logo-huawei] | ![logo-cuhk] | 
-|:-:|:-:|:-:|
-| [Sensetime Research][sensetime-web] | [Huawei][huawei-web] | [CUHK][cuhk-web] | 
-
-[logo-sensetime]: https://github.com/junting/seg2vid/blob/junting/logos/sensetime.png "Sensetime Research"
-[logo-huawei]: https://github.com/junting/seg2vid/blob/junting/logos/huawei.png "Huawei"
-[logo-cuhk]: https://github.com/junting/seg2vid/blob/junting/logos/cuhk.png "cuhk"
-
-
-
-[sensetime-web]: https://www.sensetime.com/
-[huawei-web]: http://www.noahlab.com.hk/#/home
-[cuhk-web]: http://www.cuhk.edu.hk/english/index.html
-
 
 ## Abstract
 
