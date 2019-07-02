@@ -165,9 +165,6 @@ Img2Vid Architecture
 ```
   python -u train_refine_multigpu_w_mask_two_path.py --batch_size 8 --dataset cityscapes_two_path
 ```
-## Software frameworks
-
-Our paper presents two convolutional neural networks, one correspends to the Generator (Saliency Prediction Network) and the another is the Discriminator for the adversarial training. To compute saliency maps only the Generator is needed.
 
 ### Seg2Vid on Pytorch
 
