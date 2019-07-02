@@ -150,9 +150,13 @@ Img2Vid Architecture
   - UCF-101 dataset can be downloader from the [official website](https://www.crcv.ucf.edu/research/data-sets/human-actions/ucf101/)
 
 ### Testing
-- To do.
+```
+  python -u test_refine_w_mask_two_path.py --suffix refine_w_mask_two_path --dataset cityscapes_two_path
+```
 ### Training
-- To do.
+```
+  python -u train_refine_multigpu_w_mask_two_path.py --batch_size 8 --dataset cityscapes_two_path
+```
 ## Software frameworks
 
 Our paper presents two convolutional neural networks, one correspends to the Generator (Saliency Prediction Network) and the another is the Discriminator for the adversarial training. To compute saliency maps only the Generator is needed.
