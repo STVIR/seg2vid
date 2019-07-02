@@ -135,13 +135,21 @@ Img2Vid Architecture
   │   ├── cityscapes
   │   │   ├── leftImg8bit_sequence
   │   │   │   ├── train_512x256
+  │   │   │   │   ├── aachen
+  │   │   │   │   │   ├── aachen_000003_000019_leftImg8bit.png
   │   │   │   ├── val_512x256
   │   │   │   ├── val_pix2pixHD
+  │   │   │   │   ├── frankfurt
+  │   │   │   │   │   ├── frankfurt_000000_000294_pix2pixHD.png
   │   │   │   ├── train_semantic_segmask
   │   │   │   ├── val_semantic_segmask
+  │   │   │   │   ├── frankfurt
+  │   │   │   │   │   ├── frankfurt_000000_000275_ssmask.png
   │   │   ├── gtFine
   │   │   │   ├── train
   │   │   │   ├── val
+  │   │   │   │   ├── frankfurt
+  │   │   │   │   │   ├── frankfurt_000000_000294_gtFine_instanceIds.png
   ```
 
 - KTH
