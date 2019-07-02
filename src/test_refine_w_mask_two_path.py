@@ -15,6 +15,7 @@ from opts import parse_opts
 args = parse_opts()
 print (args)
 
+
 def make_save_dir(output_image_dir):
     val_cities = ['frankfurt', 'lindau', 'munster']
     for city in val_cities:
@@ -92,7 +93,7 @@ class flowgen(object):
         print(self.jobname)
 
         if self.load:
-            model_name = '../pretrained_models/refine_genmask_w_mask_two_path_096000.pth.tar'
+            model_name = '../pretrained_models/cityscapes/refine_genmask_w_mask_two_path_096000.pth.tar'
             # model_name = '../' + self.jobname + '/{:06d}_model.pth.tar'.format(self.iter_to_load)
 
             print ("loading model from {}".format(model_name))

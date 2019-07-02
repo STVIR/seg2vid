@@ -14,6 +14,11 @@ def parse_opts():
         type=int,
         help='input image channel (3 for RGB, 1 for Grayscale)')
     parser.add_argument(
+        '--alpha_recon_image',
+        default=0.85,
+        type=float,
+        help='weight of reconstruction loss.')
+    parser.add_argument(
         '--input_size',
         default=(128, 256),
         type=tuple,

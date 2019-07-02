@@ -2,22 +2,22 @@ from datasets.dataset_path import *
 
 
 def get_training_set(opt):
-
-    assert opt.datset in ['cityscapes', 'cityscapes_two_path', 'kth']
+    assert opt.dataset in ['cityscapes', 'cityscapes_two_path', 'kth']
 
     if opt.dataset == 'cityscapes':
         from datasets.cityscapes_dataset_w_mask import Cityscapes
 
-        train_Dataset = Cityscapes(datapath=CITYSCAPES_TRAIN_DATA_PATH, datalist=CITYSCAPES_TRAIN_DATA_LIST,
-                                   size=opt.input_size, split='train', split_num=1, num_frames=opt.num_frames)
+        train_Dataset = Cityscapes(datapath=CITYSCAPES_VAL_DATA_PATH, mask_data_path=CITYSCAPES_VAL_DATA_SEGMASK_PATH,
+                                   datalist=CITYSCAPES_VAL_DATA_LIST,
+                                   size=opt.input_size, split='train', split_num=1, num_frames=opt.num_frames,
+                                   mask_suffix='ssmask.png', returnpath=False)
 
     elif opt.dataset == 'cityscapes_two_path':
-        from datasets.cityscapes_dataset_w_mask_two_path import Cityscpes
-        train_Dataset = Cityscapes(datapath=CITYSCAPES_TRAIN_DATA_PATH,
-                                   mask_data_path=CITYSCAPES_TRAIN_DATA_SEGMASK_PATH,
-                                   datalist=CITYSCAPES_TRAIN_DATA_LIST,
+        from datasets.cityscapes_dataset_w_mask_two_path import Cityscapes
+        train_Dataset = Cityscapes(datapath=CITYSCAPES_VAL_DATA_PATH, mask_data_path=CITYSCAPES_VAL_DATA_SEGMASK_PATH,
+                                   datalist=CITYSCAPES_VAL_DATA_LIST,
                                    size=opt.input_size, split='train', split_num=1, num_frames=opt.num_frames,
-                                   mask_suffix='ssmask.png')
+                                   mask_suffix='ssmask.png', returnpath=False)
 
     elif opt.dataset == 'kth':
 
@@ -30,21 +30,20 @@ def get_training_set(opt):
 
 
 def get_test_set(opt):
-
     assert opt.dataset in ['cityscapes', 'cityscapes_two_path', 'kth', 'ucf101', 'KITTI']
 
     if opt.dataset == 'cityscapes':
         from datasets.cityscapes_dataset_w_mask import Cityscapes
         test_Dataset = Cityscapes(datapath=CITYSCAPES_VAL_DATA_PATH, mask_data_path=CITYSCAPES_VAL_DATA_SEGMASK_PATH,
                                   datalist=CITYSCAPES_VAL_DATA_LIST,
-                                  size=opt.input_size, split='train', split_num=1, num_frames=opt.num_frames,
+                                  size=opt.input_size, split='test', split_num=1, num_frames=opt.num_frames,
                                   mask_suffix='ssmask.png', returnpath=True)
 
     elif opt.dataset == 'cityscapes_two_path':
         from datasets.cityscapes_dataset_w_mask_two_path import Cityscapes
         test_Dataset = Cityscapes(datapath=CITYSCAPES_VAL_DATA_PATH, mask_data_path=CITYSCAPES_VAL_DATA_SEGMASK_PATH,
                                   datalist=CITYSCAPES_VAL_DATA_LIST,
-                                  size=opt.input_size, split='train', split_num=1, num_frames=opt.num_frames,
+                                  size=opt.input_size, split='test', split_num=1, num_frames=opt.num_frames,
                                   mask_suffix='ssmask.png', returnpath=True)
 
     elif opt.dataset == 'cityscapes_pix2pixHD':
@@ -52,7 +51,7 @@ def get_test_set(opt):
         test_Dataset = Cityscapes(datapath=CITYSCAPES_TEST_DATA_PATH,
                                   mask_data_path=CITYSCAPES_VAL_DATA_SEGMASK_PATH,
                                   datalist=CITYSCAPES_VAL_DATA_MASK_LIST,
-                                  size= opt.input_size, split='test', split_num=1,
+                                  size=opt.input_size, split='test', split_num=1,
                                   num_frames=opt.num_frames, mask_suffix='ssmask.png', returnpath=True)
 
     elif opt.dataset == 'kth':
@@ -70,6 +69,7 @@ def get_test_set(opt):
     elif opt.dataset == 'ucf101':
         from datasets.ucf101_dataset import UCF101
         test_Dataset = UCF101(datapath=os.path.join(UCF_101_DATA_PATH, category),
-                              datalist=os.path.join(UCF_101_DATA_PATH, 'list/test%s.txt' % (opt.category.lower())), returnpath=True)
+                              datalist=os.path.join(UCF_101_DATA_PATH, 'list/test%s.txt' % (opt.category.lower())),
+                              returnpath=True)
 
     return test_Dataset

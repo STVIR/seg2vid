@@ -1,18 +1,18 @@
 import torch
 from torch.autograd import Variable as Vb
 import torch.optim as optim
+from torch.utils.data import DataLoader
 import os, time, sys
 
 from models.multiframe_genmask import *
 from utils import utils
-from uitls import ops
+from utils import ops
 import losses
 from dataset import get_training_set, get_test_set
 from opts import parse_opts
 
 opt = parse_opts()
 print (opt)
-
 
 
 class flowgen(object):
@@ -58,12 +58,11 @@ class flowgen(object):
 
         vae = VAE(hallucination=self.useHallucination, opt=opt).cuda()
         if torch.cuda.device_count() > 1:
-            vae = nn.DataParallel(vae, opt.sync).cuda()
+            vae = nn.DataParallel(vae).cuda()
 
         objective_func = losses.losses_multigpu_only_mask(opt, vae.module.floww)
 
         print(self.jobname)
-        cudnn.benchmark = True
 
         optimizer = optim.Adam(vae.parameters(), lr=opt.lr_rate)
 
@@ -113,7 +112,7 @@ class flowgen(object):
                     mask_fw, mask_bw, prediction_vgg_feature, gt_vgg_feature,
                     y_pred_before_refine=y_pred_before_refine)
 
-                loss = (flowloss + 2. * reconloss + reconloss_back + reconloss_before + kldloss * self.opt.lamda + flowcon + sim_loss + vgg_loss + 0.1 * mask_loss) / world_size
+                loss = (flowloss + 2. * reconloss + reconloss_back + reconloss_before + kldloss * self.opt.lamda + flowcon + sim_loss + vgg_loss + 0.1 * mask_loss)
 
                 # backward
                 loss.backward()
@@ -123,7 +122,7 @@ class flowgen(object):
                 end = time.time()
 
                 # print statistics
-                if iteration % 20 == 0 and rank == 0:
+                if iteration % 20 == 0:
                     print(
                         "iter {} (epoch {}), recon_loss = {:.6f}, recon_loss_back = {:.3f}, "
                         "recon_loss_before = {:.3f}, flow_loss = {:.6f}, flow_consist = {:.3f}, kl_loss = {:.6f}, "
@@ -140,7 +139,7 @@ class flowgen(object):
                     # Set to evaluation mode (randomly sample z from the whole distribution)
                     with torch.no_grad():
                         vae.eval()
-                        val_sample = iter(self.testloader).next()
+                        val_sample, _, _ = iter(self.testloader).next()
 
                         # Read data
                         data = val_sample.cuda()

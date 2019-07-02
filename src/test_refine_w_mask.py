@@ -92,7 +92,7 @@ class flowgen(object):
 
         if self.load:
             # model_name = '../' + self.jobname + '/{:06d}_model.pth.tar'.format(self.iter_to_load)
-            model_name = '../pretrained_models/refine_genmask_w_mask_098000.pth.tar'
+            model_name = '../pretrained_models/cityscapes/refine_genmask_w_mask_098000.pth.tar'
 
             print ("loading model from {}".format(model_name))
 
