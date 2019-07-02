@@ -122,6 +122,28 @@ Img2Vid Architecture
 - Cityscapes
   - Cityscapes dataset can be downloaded from the [official website](https://www.cityscapes-dataset.com/) (registration required).
   - We apply Deeplab-V3 [github-repo](https://github.com/tensorflow/models/tree/master/research/deeplab) to get the corresponding semantic maps.
+  - We organize the dataset following as below:
+  ```
+  seg2vid
+  ├── authors 
+  ├── figs
+  ├── gifs
+  ├── logos
+  ├── pretrained_models
+  ├── src
+  ├── data
+  │   ├── cityscapes
+  │   │   ├── leftImg8bit_sequence
+  │   │   │   ├── train_512x256
+  │   │   │   ├── val_512x256
+  │   │   │   ├── val_pix2pixHD
+  │   │   │   ├── train_semantic_segmask
+  │   │   │   ├── val_semantic_segmask
+  │   │   ├── gtFine
+  │   │   │   ├── train
+  │   │   │   ├── val
+  ```
+
 - KTH
   - We use the [KTH human action dataset](http://www.nada.kth.se/cvap/actions/) dataset, and we follow the data processing in [svg](https://github.com/edenton/svg).
 - UCF-101
