@@ -87,7 +87,7 @@ Img2Vid Architecture
 [Predicted Flow 1]:https://github.com/junting/seg2vid/blob/junting/gifs/flow/flow_1.gif
 [Predicted Flow 2]:https://github.com/junting/seg2vid/blob/junting/gifs/flow/flow_2.gif
 
-### Cityscapes 24 frames (Prediction given the 1st frame ans its segmetation mask)
+### Cityscapes 24 frames (Prediction given the 1st frame and its segmetation mask)
 | ![Long Video 1]  | ![Long Video 2]  | ![Long Video 3]  |
 |:-:|:-:|:-:|
 
