@@ -1,5 +1,5 @@
 from datasets.dataset_path import *
-
+import os
 
 def get_training_set(opt):
     assert opt.dataset in ['cityscapes', 'cityscapes_two_path', 'kth']
@@ -67,8 +67,8 @@ def get_test_set(opt):
                              returnpath=True)
 
     elif opt.dataset == 'ucf101':
-        from datasets.ucf101_dataset import UCF101
-        test_Dataset = UCF101(datapath=os.path.join(UCF_101_DATA_PATH, category),
+        from datasets.ucf_dataset import UCF101
+        test_Dataset = UCF101(datapath=os.path.join(UCF_101_DATA_PATH, opt.category),
                               datalist=os.path.join(UCF_101_DATA_PATH, 'list/test%s.txt' % (opt.category.lower())),
                               returnpath=True)
 
